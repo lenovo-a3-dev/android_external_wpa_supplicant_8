@@ -33,10 +33,12 @@ L_CFLAGS += -DNO_APSME_ATTR
 endif
 
 # Set Android extended P2P functionality
+ifneq ($(BOARD_HOSTAPD_PRIVATE_LIB),lib_driver_cmd_mtk)
 ifneq ($(USES_TI_MAC80211),true)
 L_CFLAGS += -DANDROID_P2P
 ifeq ($(BOARD_HOSTAPD_PRIVATE_LIB),)
 L_CFLAGS += -DANDROID_P2P_STUB
+endif
 endif
 endif
 

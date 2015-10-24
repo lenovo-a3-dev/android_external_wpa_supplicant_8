@@ -25,10 +25,12 @@ L_CFLAGS += -DVERSION_STR_POSTFIX=\"-$(PLATFORM_VERSION)\"
 L_CFLAGS += -DANDROID_LOG_NAME=\"wpa_supplicant\"
 
 # Set Android extended P2P functionality
+ifneq ($(BOARD_WPA_SUPPLICANT_PRIVATE_LIB ),lib_driver_cmd_mtk)
 ifneq ($(USES_TI_MAC80211),true)
 L_CFLAGS += -DANDROID_P2P
 ifeq ($(BOARD_WPA_SUPPLICANT_PRIVATE_LIB),)
 L_CFLAGS += -DANDROID_P2P_STUB
+endif
 endif
 endif
 
